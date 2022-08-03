@@ -11,5 +11,9 @@
 
 
 # 公众号申请 
-https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+1. https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+
+# 内存穿透
+1. https://natapp.cn/tunnel/edit/16w9vz9zpl
+
 
