@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"reflect"
 
 	wechat "github.com/silenceper/wechat/v2"
 	"github.com/silenceper/wechat/v2/cache"
@@ -27,27 +26,8 @@ func serveWechat(rw http.ResponseWriter, req *http.Request) {
 	// 传入request和responseWriter
 	server := officialAccount.GetServer(req, rw)
 	//设置接收消息的处理方法
-	server.SetMessageHandler(func(mixMessage *message.MixMessage) *message.Reply {
-		//TODO
-		//回复消息：演示回复用户发送的消息
-		switch mixMessage.MsgType {
-		//自动回复消息
-		case message.MsgTypeText:
-			text := message.NewText(mixMessage.Content)
-			return &message.Reply{MsgType: message.MsgTypeText, MsgData: text}
-		}
-		switch mixMessage.Event {
-		//如果是初次订阅回复图文消息
-		case message.EventSubscribe:
-			//获取token
-			miniprogrampagemessage := message.NewCustomerMiniprogrampageMessage(reflect.ValueOf(server.RequestMsg.FromUserName).String(), "title", "appId", "pages/index/index", "缩略图id")
-			officialAccount.GetCustomerMessageManager().Send(miniprogrampagemessage)
-			return &message.Reply{MsgType: message.MsgTypeMiniprogrampage, MsgData: miniprogrampagemessage}
-			//根据token 发送客服消息
-
-		}
-		text := message.NewText(mixMessage.Content)
-
+	server.SetMessageHandler(func(msg *message.MixMessage) *message.Reply {
+		text := message.NewText(msg.Content)
 		return &message.Reply{MsgType: message.MsgTypeText, MsgData: text}
 	})
 	//处理消息接收以及回复
