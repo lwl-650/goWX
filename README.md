@@ -8,3 +8,8 @@
 3. https://www.cnblogs.com/MyUniverse/p/13581884.html
 
 4. http://t.zoukankan.com/chongyao-p-15021374.html
+
+
+# 公众号申请 
+https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+
